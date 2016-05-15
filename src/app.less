@@ -19,7 +19,7 @@ h3 {
 sidebar{
   background-color: #607d8b;
   display: block;
-  padding: 50px 40px;
+  padding: 40px 30px;
 
   > header{
     display: flex;
@@ -46,6 +46,12 @@ input{
 ul{
   list-style: none;
   margin: 0;
+  height: 140px;
+  transition: height 0.5s ease;
+
+  &.collapse{
+    height: 0;
+  }
 }
 
 h1{
@@ -58,7 +64,8 @@ li{
   margin-bottom: 10px;
 }
 header{
-  margin-bottom: 20px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 
 .job{
@@ -72,6 +79,7 @@ header{
 
 .department{
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .total-head-counts {
@@ -81,4 +89,24 @@ header{
   border-radius: 30px;
   margin-top: -5px;
   margin-right: -10px;
+}
+
+.caret{
+  display: inline-block;
+  border: 2px solid #FFF;
+  border-left: 0;
+  border-top: 0;
+  width: 5px;
+  height: 5px;
+  transform-origin: center;
+  transform: rotate(45deg);
+  margin-top: 5px;
+  vertical-align: top;
+  margin-left: 10px;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+
+  &.collapse{
+    transform: rotate(225deg);
+  }
 }

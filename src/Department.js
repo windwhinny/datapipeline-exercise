@@ -8,9 +8,10 @@ export default class Department extends Component {
 
     this.state = {
       checkedList: [],
+      collapse: false,
     };
 
-    ['checkAll', 'renderJob'].forEach(fn => {
+    ['checkAll', 'renderJob', 'toggle'].forEach(fn => {
       this[fn] = this[fn].bind(this);
     });
   }
@@ -55,6 +56,12 @@ export default class Department extends Component {
     }
   }
 
+  toggle() {
+    this.setState({
+      collapse: !this.state.collapse,
+    });
+  }
+
   renderJob(job) {
     const onChange = this.checkJob.bind(this, job);
     const props = {
@@ -69,13 +76,16 @@ export default class Department extends Component {
   }
 
   renderJobs(jobs) {
-    return (<ul>
+    const { collapse } = this.state;
+
+    return (<ul className={collapse ? 'collapse' : ''}>
       {jobs.map(this.renderJob)}
     </ul>);
   }
 
   render() {
     const { name, jobs } = this.props;
+    const { collapse } = this.state;
 
     return (
       <section className="department">
@@ -84,6 +94,7 @@ export default class Department extends Component {
             <Checkbox onChange={this.checkAll} checked={this.allChecked()} />
             <h3>{name}</h3>
           </label>
+          <span className={`caret ${collapse ? 'collapse' : ''}`} onClick={this.toggle} />
           <span className="total-head-counts">{this.getTotalHeadCounts(jobs)}</span>
         </header>
         {this.renderJobs(jobs)}
