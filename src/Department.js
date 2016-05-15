@@ -11,15 +11,25 @@ export default class Department extends Component {
       collapse: false,
     };
 
+    // 重新 bind 方法
     ['checkAll', 'renderJob', 'toggle'].forEach(fn => {
       this[fn] = this[fn].bind(this);
     });
   }
 
+  /**
+   * 根据工作获取 HC 总数
+   * @param  {Array} jobs
+   * @return {Number}
+   */
   getTotalHeadCounts(jobs) {
     return jobs.reduce((total, job) => total + job.headCounts, 0);
   }
 
+  /**
+   * 是否全部选中
+   * @return {Boolean}
+   */
   allChecked() {
     const { jobs } = this.props;
     const { checkedList } = this.state;
@@ -27,6 +37,12 @@ export default class Department extends Component {
     return !!(checkedList.length && checkedList.length === jobs.length);
   }
 
+  /**
+   * 选择职位，或者判断某个职位是否被选中
+   * @param  {Object} job
+   * @param  {Boolean} checked 如果没有传递这个参数，则返回当前工作选中状态
+   * @return {Boolean}
+   */
   checkJob(job, checked) {
     const { checkedList } = this.state;
     const index = checkedList.indexOf(job.id);
@@ -44,6 +60,10 @@ export default class Department extends Component {
     return this.setState({ checkedList });
   }
 
+  /**
+   * 全选或者取消全选
+   * @param  {Boolean} checked
+   */
   checkAll(checked) {
     if (checked) {
       this.setState({
@@ -56,12 +76,20 @@ export default class Department extends Component {
     }
   }
 
+  /**
+   * 折叠职位列表
+   */
   toggle() {
     this.setState({
       collapse: !this.state.collapse,
     });
   }
 
+  /**
+   *渲染职位
+   * @param  {Object} job
+   * @return {React.Element}
+   */
   renderJob(job) {
     const onChange = this.checkJob.bind(this, job);
     const props = {
@@ -75,6 +103,11 @@ export default class Department extends Component {
     </li>);
   }
 
+  /**
+   * 渲染职位列表
+   * @param  {Array} jobs
+   * @return {React.Element}
+   */
   renderJobs(jobs) {
     const { collapse } = this.state;
 
