@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import Department from './Department';
 
 export default class SideBar extends Component {
+  clear() {
+    Object.keys(this.refs).forEach(ref => {
+      const elem = this.refs[ref];
+
+      elem.checkAll(false);
+    });
+  }
 
   renderDepartment(info, index) {
-    return <Department key={index} name={info.department} jobs={info.jobs} />;
+    let ref = `department${index}`;
+    return <Department key={index} name={info.department} jobs={info.jobs} ref={ref} />;
   }
 
   render() {
