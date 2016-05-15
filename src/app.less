@@ -1,0 +1,84 @@
+body{
+  margin: 0;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+#app{
+  display: flex;
+  color: #D6D6D6;
+}
+
+h3 {
+  color: white;
+  margin: 0;
+}
+
+sidebar{
+  background-color: #607d8b;
+  display: block;
+  padding: 50px 40px;
+
+  > header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .clear{
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #FFF;
+    font-size: 16px;
+    outline: none;
+  }
+}
+
+input{
+  vertical-align: bottom;
+
+  & ~ div, & ~ h3 {
+    display: inline-block;
+  }
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+}
+
+h1{
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+li{
+  display: flex;
+  margin-bottom: 10px;
+}
+header{
+  margin-bottom: 20px;
+}
+
+.job{
+  width: 100%;
+}
+
+.total-head-counts, .head-counts{
+  float: right;
+  margin-left: 20px;
+}
+
+.department{
+  margin-bottom: 30px;
+}
+
+.total-head-counts {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #516a76;
+  border-radius: 30px;
+  margin-top: -5px;
+  margin-right: -10px;
+}
