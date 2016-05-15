@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SideBar from './SideBar';
+import hireInfo from './mocks/hireInfo';
 
 ReactDOM.render(
-  <h1>Hello World</h1>,
+  <SideBar hireInfo={hireInfo} />,
   document.querySelector('#app')
 );
